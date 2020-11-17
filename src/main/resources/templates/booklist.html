@@ -1,41 +1,37 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Car list</title>
-    <meta http-equiv="Content-Type" content = "text/html" charset="UTF-8">
-
+    <title>Car form</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
+
 <body>
-<!--   <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>-->
-
-    <h1>Car List </h1>
-    <!--   <table>
-       <tbody>
-            <tr th:each = "car : ${cars}">
-                <td th:text="${car.cartitle}"></td>
-                <td th:text="${car.carcountry}"></td>
-                <td th:text="${car.caryear}"></td>
-                <td th:text="${car.carinfo}"></td>
-                <td th:text="${car.carprice}"></td>
-               	<td th:text="${car.owner.ownername}"></td>
-                 <td sec:authorize="hasRole('ADMIN')"><a th:href="@{/delete/{id}(id=${car.carid})}">Delete</a></td>
-               <td><a th:href="@{/edit/{id}(id=${car.carid})}">Edit</a></td>  
-             
-                </tr>
-            
-       </tbody>
-
-    </table>
-     <form th:action="@{/add}" method="post">	
-                	<input type="submit" value="Add Car To an existing owner"/>
-                	 </form>
-              <form th:action="@{/addC}" method="post">
-<input type="submit" value="Add Car Owner"/>
-
-     </form>
-        <form th:action="@{/logout}" method="post">
-<input type="submit" value="Sign Out"/>
-</form>-->
-
+    <h1>Add Car</h1>
+    <div>
+    <form th:object="${car}" th:action="@{save}" action="#" method="post">
+        <label for="cartitle">Car Name: </label>
+        <input type="text" id="cartitle" th:field="*{cartitle}" /></br>
+        
+        <label for="carauthor">Car Country: </label>
+        <input type="text" id="carcountry" th:field="*{carcountry}" /></br>
+        
+        <label for="caryear">Car Year: </label>
+        <input type="text" id="caryear" th:field="*{caryear}" /></br>
+        
+        <label for="carinfo">Car Info: </label>
+        <input type="text" id="carinfo" th:field="*{carinfo}" /></br>
+        
+           <label for="carprice">Car Price: </label>
+        <input type="text" id="carprice" th:field="*{carprice}" /></br>
+        
+        
+        <label for="categorylist">Owner</label>
+		<select id="categorylist" th:field="*{owner}" class="form-control">
+		<option th:each="owner: ${owner}" th:value="${owner.ownerid}" th:text="${owner.ownername}"></option>
+		</select>
+        <input type="submit" value="Save"></input>
+    </form>
+    </div>
 </body>
-</html>	
+
+</html>
