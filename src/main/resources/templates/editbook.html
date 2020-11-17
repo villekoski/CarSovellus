@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Book form</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+    <h1>Edit book</h1>
+    <div>
+    <form th:object="${car}" th:action="@{../save}" action="#" method="post">
+        <input type="hidden" th:field="*{carid}" class="form-control"/>
+        
+        <label for="cartitle">Car Name: </label>
+        <input type="text" id="cartitle" th:field="*{cartitle}" /></br>
+        <label for="carcountryr">Car Country: </label>
+        <input type="text" id="carcountry" th:field="*{carcountry}" /></br>
+        <label for="caryear">Car Year: </label>
+        <input type="text" id="caryear" th:field="*{caryear}" /></br>
+        <label for="carnfo">Car Info: </label>
+        <input type="text" id="carinfo" th:field="*{carinfo}" /></br>
+        <label for="carprice">Car Price: </label>
+        <input type="text" id="carprice" th:field="*{carprice}" /></br>
+ <label for="categorylist">Owner</label>
+<select id="categorylist" th:field="*{owner}" class="form-control">
+<option th:each="owner: ${owner}" th:value="${owner.ownerid}" th:text="${owner.ownername}"></option>
+</select>
+        <input type="submit" value="Save"></input>
+        
+     
+    </form>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Category form</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+    <h1>Add Category</h1>
+    <div>
+    <form th:object="${owner}" th:action="@{saveC}" action="#" method="post">
+        <label for="ownername">Owner Name: </label>
+        <input type="text" id="ownername" th:field="*{ownername}" /></br>
+
+        <input type="submit" value="Save"></input>
+    </form>
+    </div>
+</body>
+
+</html>	
