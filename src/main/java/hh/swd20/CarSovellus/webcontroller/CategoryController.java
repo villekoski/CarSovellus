@@ -25,6 +25,7 @@ public class CategoryController {
 	}
 	  @RequestMapping(value ="/addC")
 	    public String addCategory(Model model) {
+		  model.addAttribute("owners", ownerRepository.findAll());
 		  model.addAttribute("owner", new Owner());
 		  return "newcategory";
 	}
