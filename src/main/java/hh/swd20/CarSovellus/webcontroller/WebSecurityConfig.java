@@ -1,4 +1,4 @@
-
+/*
 package hh.swd20.CarSovellus.webcontroller;
 
 
@@ -48,3 +48,4 @@ public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception 
 	BCryptPasswordEncoder());
 		}
 	}
+*/

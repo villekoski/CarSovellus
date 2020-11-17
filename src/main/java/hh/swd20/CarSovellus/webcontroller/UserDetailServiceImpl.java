@@ -1,4 +1,4 @@
-package hh.swd20.CarSovellus.webcontroller;
+/*package hh.swd20.CarSovellus.webcontroller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -29,3 +29,4 @@ public class UserDetailServiceImpl implements UserDetailsService  {
         return user;
     }
 }
+*/
