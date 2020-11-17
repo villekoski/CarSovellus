@@ -30,6 +30,6 @@ public class CategoryController {
 	  @RequestMapping(value = "/saveC", method = RequestMethod.POST)
 	  	public String save(Owner owner) {
 		  ownerRepository.save(owner);
-		  return "redirect:/";
+		  return "redirect:/booklist";
 	  }
 }

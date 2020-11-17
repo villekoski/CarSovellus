@@ -57,13 +57,13 @@ public class BookController {
     @RequestMapping(value="/save", method = RequestMethod.POST)
     public String save(Car car) {
         carRepository.save(car);
-        return "redirect:/";
+        return "redirect:/booklist";
     }
    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
    //@PreAuthorize("hasRole('ADMIN')")
     public String deleteBook(@PathVariable("id") Long carid, Model model) {
         carRepository.deleteById(carid);
-        return "redirect:../";
+        return "redirect:../booklist";
     
     }
     @RequestMapping(value = "/edit/{id}")
