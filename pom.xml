@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>Bookstore</artifactId>
+	<artifactId>CarSovellus</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>AutoSovellus</name>
 	<description>aasdsad</description>
