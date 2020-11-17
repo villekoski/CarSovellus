@@ -13,9 +13,9 @@ import hh.swd20.CarSovellus.domain.Car;
 import hh.swd20.CarSovellus.domain.CarRepository;
 import hh.swd20.CarSovellus.domain.Owner;
 import hh.swd20.CarSovellus.domain.OwnerRepository;
-/*import hh.swd20.CarSovellus.domain.User;
+import hh.swd20.CarSovellus.domain.User;
 import hh.swd20.CarSovellus.domain.UserRepository;
-*/
+
 
 
 @SpringBootApplication
@@ -33,7 +33,7 @@ public class CarSovellusApplication extends SpringBootServletInitializer {
 	}
 	
 	@Bean
-    public CommandLineRunner demo(CarRepository carRepository, OwnerRepository ownerRepository/*, UserRepository uRepository*/) {
+    public CommandLineRunner demo(CarRepository carRepository, OwnerRepository ownerRepository, UserRepository uRepository) {
         return (args) -> {	
         	
         	
@@ -52,20 +52,20 @@ public class CarSovellusApplication extends SpringBootServletInitializer {
             carRepository.save(b2);
             carRepository.save(b3);
             
-         /*   User user1 = new User("USER", "$2b$10$Bz9wToqfoDIvD8cP8rZTteiZx7HIly8fglEajwUS9ctv8r/OK7g6i", "ROLE_USER");
+           User user1 = new User("USER", "$2b$10$Bz9wToqfoDIvD8cP8rZTteiZx7HIly8fglEajwUS9ctv8r/OK7g6i", "ROLE_USER");
             User user2 = new User("CARLOVER666", "$2b$10$uxmkJ9AxEWiMyuxTteJgYOvryVwzOjq805hIbVHC37.9H8V.Aq9ya", "ROLE_ADMIN");
         	uRepository.save(user1);
         	uRepository.save(user2);
-        */
+     
             for (Car car : carRepository.findAll()) {
                 log.info(car.toString());
             }
             for (Owner owner : ownerRepository.findAll()) {
                 log.info(owner.toString());
             }
-          /*  for (User user : uRepository.findAll()) {
+        for (User user : uRepository.findAll()) {
                 log.info(user.toString());
-            }*/
+            }
         };
     }
 }

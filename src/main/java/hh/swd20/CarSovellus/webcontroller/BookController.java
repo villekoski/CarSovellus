@@ -3,7 +3,7 @@ package hh.swd20.CarSovellus.webcontroller;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -61,7 +61,7 @@ public class BookController {
         return "redirect:/";
     }
    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-   //@PreAuthorize("hasRole('ADMIN')")
+   @PreAuthorize("hasRole('ADMIN')")
     public String deleteBook(@PathVariable("id") Long carid, Model model) {
         carRepository.deleteById(carid);
         return "redirect:../";
@@ -74,9 +74,9 @@ public class BookController {
         return "editbook";
     }
     
-  /*  @RequestMapping(value="/login")
+    @RequestMapping(value="/login")
     public String login() {
         return "/login";
-    }*/
+    }
  
     }
