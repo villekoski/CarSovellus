@@ -43,7 +43,7 @@ public class BookController {
         return carRepository.save(car);
     }
 
-    @RequestMapping("/booklist")
+    @RequestMapping("/")
     public String bookList(Model model) {
         model.addAttribute("cars", carRepository.findAll());
         return "/booklist";
