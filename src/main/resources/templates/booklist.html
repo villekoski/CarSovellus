@@ -18,7 +18,7 @@
                 <td th:text="${car.carinfo}"></td>
                 <td th:text="${car.carprice}"></td>
                	<td th:text="${car.owner.ownername}"></td>
-             <!--    <td sec:authorize="hasRole('ADMIN')">--><a th:href="@{/delete/{id}(id=${car.carid})}">Delete</a></td>
+             <!--    <td sec:authorize="hasRole('ADMIN')"><a th:href="@{/delete/{id}(id=${car.carid})}">Delete</a></td>-->
                <td><a th:href="@{/edit/{id}(id=${car.carid})}">Edit</a></td>  
              
                 </tr>
