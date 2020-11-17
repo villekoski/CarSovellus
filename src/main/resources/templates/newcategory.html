@@ -8,10 +8,17 @@
 <body>
     <h1>Add Category</h1>
     <div>
+    <table> <tr th:each = "owner : ${owner}">
+                <td th:text="${owner.ownername}"></td>
+   
+               	
+
+                </tr>
+                </table>
     <form th:object="${owner}" th:action="@{saveC}" action="#" method="post">
         <label for="ownername">Owner Name: </label>
         <input type="text" id="ownername" th:field="*{ownername}" /></br>
-
+		<a href="/addC" class="btn btn-primary">Add Owner</a>
         <input type="submit" value="Save"></input>
     </form>
     </div>

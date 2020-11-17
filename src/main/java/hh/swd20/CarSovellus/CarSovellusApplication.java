@@ -52,7 +52,7 @@ public class CarSovellusApplication extends SpringBootServletInitializer {
             carRepository.save(b2);
             carRepository.save(b3);
             
-           User user1 = new User("USER", "$2b$10$Bz9wToqfoDIvD8cP8rZTteiZx7HIly8fglEajwUS9ctv8r/OK7g6i", "ROLE_USER");
+           User user1 = new User("Matti1", "$2b$10$Bz9wToqfoDIvD8cP8rZTteiZx7HIly8fglEajwUS9ctv8r/OK7g6i", "ROLE_USER");
             User user2 = new User("CARLOVER666", "$2b$10$uxmkJ9AxEWiMyuxTteJgYOvryVwzOjq805hIbVHC37.9H8V.Aq9ya", "ROLE_ADMIN");
         	uRepository.save(user1);
         	uRepository.save(user2);
