@@ -9,7 +9,7 @@
 <!--   <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>-->
 
     <h1>Car List </h1>
-    <!--   <table>
+       <table>
        <tbody>
             <tr th:each = "car : ${cars}">
                 <td th:text="${car.cartitle}"></td>
@@ -18,7 +18,7 @@
                 <td th:text="${car.carinfo}"></td>
                 <td th:text="${car.carprice}"></td>
                	<td th:text="${car.owner.ownername}"></td>
-                 <td sec:authorize="hasRole('ADMIN')"><a th:href="@{/delete/{id}(id=${car.carid})}">Delete</a></td>
+            <!--      <td sec:authorize="hasRole('ADMIN')"> --> <a th:href="@{/delete/{id}(id=${car.carid})}">Delete</a></td>
                <td><a th:href="@{/edit/{id}(id=${car.carid})}">Edit</a></td>  
              
                 </tr>
@@ -33,9 +33,9 @@
 <input type="submit" value="Add Car Owner"/>
 
      </form>
-        <form th:action="@{/logout}" method="post">
+  <!--      <form th:action="@{/logout}" method="post">
 <input type="submit" value="Sign Out"/>
-</form>-->
+</form> --> 
 
 </body>
 </html>	
