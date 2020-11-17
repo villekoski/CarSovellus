@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import hh.swd20.CarSovellus.domain.Car;
 import hh.swd20.CarSovellus.domain.CarRepository;
+import hh.swd20.CarSovellus.domain.Owner;
 import hh.swd20.CarSovellus.domain.OwnerRepository;
 @CrossOrigin
 @Controller

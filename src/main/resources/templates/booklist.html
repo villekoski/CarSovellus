@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Booklist</title>
+    <title>Car list</title>
     <meta http-equiv="Content-Type" content = "text/html" charset="UTF-8">
 
 </head>
@@ -10,7 +10,7 @@
 
     <h1>Car List </h1>
     <table>
-        <tbody>
+     <!--     <tbody>
             <tr th:each = "car : ${cars}">
                 <td th:text="${car.cartitle}"></td>
                 <td th:text="${car.carcountry}"></td>
@@ -18,13 +18,13 @@
                 <td th:text="${car.carinfo}"></td>
                 <td th:text="${car.carprice}"></td>
                	<td th:text="${car.owner.ownername}"></td>
-             <!--    <td sec:authorize="hasRole('ADMIN')"><a th:href="@{/delete/{id}(id=${car.carid})}">Delete</a></td>-->
+                 <td sec:authorize="hasRole('ADMIN')"><a th:href="@{/delete/{id}(id=${car.carid})}">Delete</a></td>
                <td><a th:href="@{/edit/{id}(id=${car.carid})}">Edit</a></td>  
              
                 </tr>
             
        </tbody>
-
+-->
     </table>
      <form th:action="@{/add}" method="post">	
                 	<input type="submit" value="Add Car To an existing owner"/>

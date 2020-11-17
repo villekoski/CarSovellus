@@ -1,12 +1,12 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Book form</title>
+    <title>Car form</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 
 <body>
-    <h1>Edit book</h1>
+    <h1>Edit Car</h1>
     <div>
     <form th:object="${car}" th:action="@{../save}" action="#" method="post">
         <input type="hidden" th:field="*{carid}" class="form-control"/>
