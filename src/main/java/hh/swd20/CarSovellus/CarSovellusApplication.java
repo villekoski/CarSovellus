@@ -65,22 +65,22 @@ public class CarSovellusApplication extends SpringBootServletInitializer impleme
         	
         	
         	Owner eka = new Owner("Timo Jutila");
-            Owner toka = new Owner("Bob Marley");
+            Owner toka = new Owner("Bob Ross");
             Owner kolmas = new Owner("Hannu Kerttu");
             ownerRepository.save(eka);
             ownerRepository.save(toka);
             ownerRepository.save(kolmas);
              
-            Car b1 = new Car("Bugatti Veyron", "Suomi", 1990, "Ihan ookoo auto!", 200000.0, eka );
-            Car b2 = new Car("Taxi Auto", "Nigeria", 2010, "Kulkee kulkee", 10.0, toka);
-            Car b3 = new Car("Raktori", "Venäjä", 1890, "Davai davai", 11200.0, kolmas);
+            Car b1 = new Car("Bugatti Veyron", "Ranska", 2005, "Huippuluokan urheiluauto, rajoitettu huippunopeus 430kmh", 1000000.0, eka );
+            Car b2 = new Car("BMW X5 E53", "Meksiko", 2010, "Varustettu  4,6-litraisella V8 moottorilla.", 150000.0, toka);
+            Car b3 = new Car("Volkswagen Golf", "Saksa", 2008, "Golf on Maailman toiseksi valmistetuin auto.", 11200.0, kolmas);
             
             carRepository.save(b1);
             carRepository.save(b2);
             carRepository.save(b3);
             
            User user1 = new User("Matti1", "$2b$10$Bz9wToqfoDIvD8cP8rZTteiZx7HIly8fglEajwUS9ctv8r/OK7g6i", "ROLE_USER");
-            User user2 = new User("CARLOVER666", "$2b$10$uxmkJ9AxEWiMyuxTteJgYOvryVwzOjq805hIbVHC37.9H8V.Aq9ya", "ROLE_ADMIN");
+            User user2 = new User("CARLOVER123", "$2b$10$uxmkJ9AxEWiMyuxTteJgYOvryVwzOjq805hIbVHC37.9H8V.Aq9ya", "ROLE_ADMIN");
         	uRepository.save(user1);
         	uRepository.save(user2);
      

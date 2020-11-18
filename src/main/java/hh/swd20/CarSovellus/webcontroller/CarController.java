@@ -54,7 +54,7 @@ public class CarController {
         return "carlist";
     }
     @RequestMapping(value ="/add")
-    public String addBook(Model model,  Car car) {
+    public String addCar(Model model,  Car car) {
     	   model.addAttribute("owner", ownerRepository.findAll());
         model.addAttribute("car", new Car());
         return "addcar";

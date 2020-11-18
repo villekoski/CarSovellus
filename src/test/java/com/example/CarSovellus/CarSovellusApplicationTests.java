@@ -1,4 +1,4 @@
-package com.example.CarSovellus;
+/*package com.example.CarSovellus;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -21,4 +21,4 @@ private OwnerController controller;
 public void contextLoads() {
 assertThat(controller).isNotNull();
 }
-}	
+}	*/
