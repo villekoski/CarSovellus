@@ -78,7 +78,7 @@ public class CarController {
     
     }
     @RequestMapping(value = "/edit/{id}")
-    public String editBook(@PathVariable("id") Long carid, Model model) {
+    public String editCar(@PathVariable("id") Long carid, Model model) {
     	 model.addAttribute("owner", ownerRepository.findAll());
         model.addAttribute("car", carRepository.findById(carid));
         return "editcar";
