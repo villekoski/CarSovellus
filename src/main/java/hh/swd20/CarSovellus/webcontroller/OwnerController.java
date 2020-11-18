@@ -21,17 +21,22 @@ public class OwnerController {
 	@Autowired
 	private OwnerRepository ownerRepository;
 	
+	//omistajalista
 	@RequestMapping("/ownerlist")
 	 public String ownerList(Model model) {
         model.addAttribute("owner", ownerRepository.findAll());
         return "ownerlist";
 	}
+	
+	//luo uuden omistajan
 	  @RequestMapping(value ="/addO")
 	    public String addOwner(Model model) {
 		  model.addAttribute("owners", ownerRepository.findAll());
 		  model.addAttribute("owner", new Owner());
 		  return "newowner";
 	}
+	  
+	  //tallentaa uuden omistajan jos menee validoinnista läpi
 	  @RequestMapping(value = "/saveO", method = RequestMethod.POST)
 	  	public String save(@Valid Owner owner, BindingResult bindingResult, Model model) {
 		  model.addAttribute("owners", ownerRepository.findAll());

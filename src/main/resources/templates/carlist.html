@@ -1,37 +1,25 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<style>
-h1 {
-	border: 4px solid black;
-	
-	align-left;
-	width:30%
-		}
-button {
-	color:green;
-
-
-}
-
-table, th, td, tr, tbody {
-	border: 1px solid black;
-}
-
-</style>
+	<style>
+		h1	{border: 4px solid black;
+			align-left;
+			width:30%}
+			
+		button {color:green;}
+		
+		table, th, td, tr, tbody {border: 1px solid black;}
+	</style>
 
     <title>Car list</title>
     <meta http-equiv="Content-Type" content = "text/html" charset="UTF-8">
-
-
-
 </head>
 <body>
-   <h1 th:text="#{greeting}"></h1><h2 th:inline="text"> [[${#httpServletRequest.remoteUser}]]!</h2>
+   <h1 th:text="#{greeting}"></h1><h2 th:inline="text"> [[${#httpServletRequest.remoteUser}]]</h2>
  
 
-    <h2 th:text="#{titletext}"></h2>
-       <table>
+   <h2 th:text="#{titletext}"></h2>
+     <table>
      
        <tbody>
         <td><b th:text="#{cartitleheader}"></b>
@@ -40,12 +28,12 @@ table, th, td, tr, tbody {
            <td><b th:text="#{carinfoheader}"></b>
             <td><b th:text="#{carpriceheader}"></b>
             <td><b th:text="#{carownerheader}"></b>
-            <tr th:each = "car : ${cars}">
+              <tr th:each = "car : ${cars}">
                 <td th:text="${car.cartitle}"></td>
                 <td th:text="${car.carcountry}"></td>
                 <td th:text="${car.caryear}"></td>
                 <td th:text="${car.carinfo}"></td>
-                <td th:text="${car.carprice}"></td>
+                <td th:text="${car.carprice}"> </td>
                	<td th:text="${car.owner.ownername}"></td>
                   <td sec:authorize="hasRole('ADMIN')">  <a th:href="@{/delete/{id}(id=${car.carid})}"  th:text="#{deletebutton}" ></a></td>
                <td><a th:href="@{/edit/{id}(id=${car.carid})}" th:text="#{editbutton}" ></a></td>  
@@ -54,20 +42,21 @@ table, th, td, tr, tbody {
             
        </tbody>
 
-    </table>
+   	</table>
  <table>
      <form th:action="@{/add}" method="post">	
-                	<button class="button" type="submit" th:text="#{addcarbutton}"></button>&nbsp;                		
+     <button class="button" type="submit" th:text="#{addcarbutton}"></button>&nbsp;                		
      </form>  
                	 
      <form th:action="@{/addO}" method="post">
-					<button type="submit" th:text="#{addownerbutton}"></button>&nbsp;
+	 <button type="submit" th:text="#{addownerbutton}"></button>&nbsp;
      </form>
      
         <form th:action="@{/logout}" method="post">
-<button type="submit" th:text="#{logoutbutton}"></button>
-</form> 
+		<button type="submit" th:text="#{logoutbutton}"></button>
+		</form> 
 </table>
+
    <span th:text="#{lang.change}"></span>:
 <select id="locales">
     <option value=""></option>

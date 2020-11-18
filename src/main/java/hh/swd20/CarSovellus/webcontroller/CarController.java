@@ -33,16 +33,22 @@ public class CarController {
     @Autowired
     private OwnerRepository ownerRepository;
     
-
+    //listaa kaikki autot
     @RequestMapping(value="/cars", method = RequestMethod.GET)
     public @ResponseBody List<Car> carListRest() {	
         return (List<Car>) carRepository.findAll();
     }    
-
+    //listaa auton idn perusteella
     @RequestMapping(value="/cars/{carid}", method = RequestMethod.GET)
-    public @ResponseBody Optional<Car> findCarRest(@PathVariable("id") Long carid) {	
+    public @ResponseBody Optional<Car> findCarRest(@PathVariable("carid") Long carid) {	
     	return carRepository.findById(carid);
     }   
+    //listaa omistajat ja heidän autot
+    @RequestMapping(value="/owners", method = RequestMethod.GET)
+    public @ResponseBody List<Owner> ownerListRest() {	
+        return (List<Owner>) ownerRepository.findAll();
+    } 
+    
     @RequestMapping(value="/cars", method = RequestMethod.POST)
     public @ResponseBody Car saveCarRest(@RequestBody Car car) {
         return carRepository.save(car);
@@ -53,12 +59,14 @@ public class CarController {
         model.addAttribute("cars", carRepository.findAll());
         return "carlist";
     }
+    //luo uuden auton
     @RequestMapping(value ="/add")
     public String addCar(Model model,  Car car) {
     	   model.addAttribute("owner", ownerRepository.findAll());
         model.addAttribute("car", new Car());
         return "addcar";
     }
+    //tallentaa auton jos menee validoinnista läpi
     @RequestMapping(value="/save", method = RequestMethod.POST)
     public String save(@Valid Car car, BindingResult bindingResult, Model model) {
     	 model.addAttribute("owner", ownerRepository.findAll());
@@ -69,7 +77,7 @@ public class CarController {
     		 return "redirect:/";
     	}
     }
-    
+    //poista auto listasta jos admin oikeudet
    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
    @PreAuthorize("hasRole('ADMIN')")
     public String deleteCar(@PathVariable("id") Long carid, Model model) {
@@ -77,13 +85,14 @@ public class CarController {
         return "redirect:../";
     
     }
+   //muokkaa autoja, niiden infoja tai omistajia
     @RequestMapping(value = "/edit/{id}")
     public String editCar(@PathVariable("id") Long carid, Model model) {
     	 model.addAttribute("owner", ownerRepository.findAll());
         model.addAttribute("car", carRepository.findById(carid));
         return "editcar";
     }
-    
+    //sisäänkirjautuminen
     @RequestMapping(value="/login")
     public String login() {
         return "login";
