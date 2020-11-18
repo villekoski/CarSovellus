@@ -26,7 +26,7 @@ import hh.swd20.CarSovellus.domain.OwnerRepository;
 @CrossOrigin
 @Controller
 
-public class BookController {
+public class CarController {
 	
     @Autowired
     private CarRepository carRepository;
@@ -49,21 +49,21 @@ public class BookController {
     }
 
     @RequestMapping("/")
-    public String bookList(Model model) {
+    public String carList(Model model) {
         model.addAttribute("cars", carRepository.findAll());
-        return "booklist";
+        return "carlist";
     }
     @RequestMapping(value ="/add")
     public String addBook(Model model,  Car car) {
     	   model.addAttribute("owner", ownerRepository.findAll());
         model.addAttribute("car", new Car());
-        return "addbook";
+        return "addcar";
     }
     @RequestMapping(value="/save", method = RequestMethod.POST)
     public String save(@Valid Car car, BindingResult bindingResult, Model model) {
     	 model.addAttribute("owner", ownerRepository.findAll());
     	if (bindingResult.hasErrors()) {
-    		return "addbook";
+    		return "addcar";
     	}else{
     		carRepository.save(car);
     		 return "redirect:/";
@@ -72,7 +72,7 @@ public class BookController {
     
    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
    @PreAuthorize("hasRole('ADMIN')")
-    public String deleteBook(@PathVariable("id") Long carid, Model model) {
+    public String deleteCar(@PathVariable("id") Long carid, Model model) {
         carRepository.deleteById(carid);
         return "redirect:../";
     
@@ -81,7 +81,7 @@ public class BookController {
     public String editBook(@PathVariable("id") Long carid, Model model) {
     	 model.addAttribute("owner", ownerRepository.findAll());
         model.addAttribute("car", carRepository.findById(carid));
-        return "editbook";
+        return "editcar";
     }
     
     @RequestMapping(value="/login")

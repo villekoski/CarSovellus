@@ -1,42 +1,73 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+<style>
+button {
+	color:green;
+}
+</style>
+	
+
     <title>Car form</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 
 <body>
-    <h1>Add Car</h1>
+    <h1 th:text="#{addcar}"></h1>
      
     <div>
     <form th:object="${car}" th:action="@{save}" action="#" method="post">
-        <label for="cartitle">Car Name: </label>
+        <label for="cartitle" th:text="#{carname1}"> </label>
         <input type="text" id="cartitle" th:field="*{cartitle}" />
          <td th:if="${#fields.hasErrors('cartitle')}" th:errors="*{cartitle}"> Error</td></br>
         
-        <label for="carauthor">Car Country: </label>
+        <label for="carauthor" th:text="#{carcountry1}"> </label>
         <input type="text" id="carcountry" th:field="*{carcountry}" />
          <td th:if="${#fields.hasErrors('carcountry')}" th:errors="*{carcountry}"> Error</td></br>
         
-        <label for="caryear">Car Year: </label>
+        <label for="caryear" th:text="#{caryear1}"> </label>
         <input type="text" id="caryear" th:field="*{caryear}" />
          <td th:if="${#fields.hasErrors('caryear')}" th:errors="*{caryear}"> Error</td></br>
         
-        <label for="carinfo">Car Info: </label>
+        <label for="carinfo" th:text="#{carinfo1}"> </label>
         <input type="text" id="carinfo" th:field="*{carinfo}" />
          <td th:if="${#fields.hasErrors('carinfo')}" th:errors="*{carinfo}"> Error</td></br>
         
-           <label for="carprice">Car Price: </label>
+           <label for="carprice" th:text="#{carpricer1}"> </label>
         <input type="text" id="carprice" th:field="*{carprice}" />
          <td th:if="${#fields.hasErrors('carprice')}" th:errors="*{carprice}"> Error</td></br>
         
-        <label for="categorylist">Owner</label>
+        <label for="categorylist" th:text="#{carowner1}"></label>
 		<select id="categorylist" th:field="*{owner}" class="form-control">
 		<option th:each="owner: ${owner}" th:value="${owner.ownerid}" th:text="${owner.ownername}"></option>
 		</select>
-        <input type="submit" value="Save"></input>
+        <button type="submit" th:text="#{savebutton}"></button>
     </form>
+    <form th:action="@{/}" method="post">	
+                	<button class="button" type="submit" th:text="#{booklist1}"></button>&nbsp;                		
+     </form>  
     </div>
+    
+       <span th:text="#{lang.change}"></span>:
+<select id="locales">
+    <option value=""></option>
+    <option value="en" th:text="#{lang.eng}"></option>
+    <option value="fin" th:text="#{lang.fin}"></option>
+</select>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+</script>
+
+		<script type="text/javascript">
+		$(document).ready(function() {
+		    $("#locales").change(function () {
+		        var selectedOption = $('#locales').val();
+		        if (selectedOption != ''){
+		            window.location.replace('/add?lang=' + selectedOption);
+		        }
+		    });
+		});
+		</script>
 </body>
 
 </html>

@@ -17,26 +17,26 @@ import hh.swd20.CarSovellus.domain.Owner;
 import hh.swd20.CarSovellus.domain.OwnerRepository;
 
 @Controller
-public class CategoryController {
+public class OwnerController {
 	@Autowired
 	private OwnerRepository ownerRepository;
 	
-	@RequestMapping("/categorylist")
-	 public String categoryList(Model model) {
+	@RequestMapping("/ownerlist")
+	 public String ownerList(Model model) {
         model.addAttribute("owner", ownerRepository.findAll());
-        return "categorylist";
+        return "ownerlist";
 	}
-	  @RequestMapping(value ="/addC")
-	    public String addCategory(Model model) {
+	  @RequestMapping(value ="/addO")
+	    public String addOwner(Model model) {
 		  model.addAttribute("owners", ownerRepository.findAll());
 		  model.addAttribute("owner", new Owner());
-		  return "newcategory";
+		  return "newowner";
 	}
-	  @RequestMapping(value = "/saveC", method = RequestMethod.POST)
+	  @RequestMapping(value = "/saveO", method = RequestMethod.POST)
 	  	public String save(@Valid Owner owner, BindingResult bindingResult, Model model) {
 		  model.addAttribute("owners", ownerRepository.findAll());
 		  if (bindingResult.hasErrors()) {
-	    		return "newcategory";
+	    		return "newowner";
 	    	}else{
 	    		ownerRepository.save(owner);
 	    		 return "redirect:/";

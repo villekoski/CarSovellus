@@ -1,5 +1,7 @@
 package hh.swd20.CarSovellus;
 
+import java.util.Locale;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -8,6 +10,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
+import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 import hh.swd20.CarSovellus.domain.Car;
 import hh.swd20.CarSovellus.domain.CarRepository;
@@ -19,7 +26,7 @@ import hh.swd20.CarSovellus.domain.UserRepository;
 
 
 @SpringBootApplication
-public class CarSovellusApplication extends SpringBootServletInitializer {
+public class CarSovellusApplication extends SpringBootServletInitializer implements WebMvcConfigurer {
 	private static final Logger log = LoggerFactory.getLogger(CarSovellusApplication.class);
 
 	
@@ -31,6 +38,26 @@ public class CarSovellusApplication extends SpringBootServletInitializer {
 	public static void main(String[] args) {
 		SpringApplication.run(CarSovellusApplication.class, args);
 	}
+	
+	@Bean
+    public LocaleResolver localeResolver() {
+        SessionLocaleResolver slr = new SessionLocaleResolver();
+        slr.setDefaultLocale(Locale.US);
+        return slr;
+    }
+
+    @Bean
+    public LocaleChangeInterceptor localeChangeInterceptor() {
+        LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
+        lci.setParamName("lang");
+        return lci;
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(localeChangeInterceptor());
+    }
+	
 	
 	@Bean
     public CommandLineRunner demo(CarRepository carRepository, OwnerRepository ownerRepository, UserRepository uRepository) {

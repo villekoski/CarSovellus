@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+
+<style>
+button {
+	color:green;
+}
+
+table, td, tr, tbody {
+	border: 1px solid black;
+}
+
+</style>
+
+    <title>Car Form</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+    <h1 th:text="#{addcarowner}"> </h1>
+     <h2 th:text="#{existingowners}"> </h2>
+    <div>
+    <table>
+    
+     <tbody>
+     
+            <tr th:each = "owner : ${owners}">
+                <td th:text="${owner.ownername}"></td>
+   				
+       
+       </tbody>
+       </table>
+    <form th:object="${owner}" th:action="@{saveO}" action="#" method="post">
+    
+        <label for="ownername" th:text="#{ownername1}"> </label><br>
+        <input type="text" id="ownername" th:field="*{ownername}" />
+		<td th:if="${#fields.hasErrors('ownername')}" th:errors="*{ownername}"> Error</td>
+        <button type="submit" th:text="#{savebutton}"></button>
+        
+    </form>
+     <form th:action="@{/}" method="post">	
+                	<button class="button" type="submit" th:text="#{booklist1}"></button>&nbsp;                		
+     </form>  
+    
+  
+    </div>
+    
+     <span th:text="#{lang.change}"></span>:
+<select id="locales">
+    <option value=""></option>
+    <option value="en" th:text="#{lang.eng}"></option>
+    <option value="fin" th:text="#{lang.fin}"></option>
+</select>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+</script>
+
+		<script type="text/javascript">
+		$(document).ready(function() {
+		    $("#locales").change(function () {
+		        var selectedOption = $('#locales').val();
+		        if (selectedOption != ''){
+		            window.location.replace('/addO?lang=' + selectedOption);
+		        }
+		    });
+		});
+		</script>
+</body>
+
+</html>	
