@@ -7,23 +7,28 @@
 
 <body>
     <h1>Add Car</h1>
+     
     <div>
     <form th:object="${car}" th:action="@{save}" action="#" method="post">
         <label for="cartitle">Car Name: </label>
-        <input type="text" id="cartitle" th:field="*{cartitle}" /></br>
+        <input type="text" id="cartitle" th:field="*{cartitle}" />
+         <td th:if="${#fields.hasErrors('cartitle')}" th:errors="*{cartitle}"> Error</td></br>
         
         <label for="carauthor">Car Country: </label>
-        <input type="text" id="carcountry" th:field="*{carcountry}" /></br>
+        <input type="text" id="carcountry" th:field="*{carcountry}" />
+         <td th:if="${#fields.hasErrors('carcountry')}" th:errors="*{carcountry}"> Error</td></br>
         
         <label for="caryear">Car Year: </label>
-        <input type="text" id="caryear" th:field="*{caryear}" /></br>
+        <input type="text" id="caryear" th:field="*{caryear}" />
+         <td th:if="${#fields.hasErrors('caryear')}" th:errors="*{caryear}"> Error</td></br>
         
         <label for="carinfo">Car Info: </label>
-        <input type="text" id="carinfo" th:field="*{carinfo}" /></br>
+        <input type="text" id="carinfo" th:field="*{carinfo}" />
+         <td th:if="${#fields.hasErrors('carinfo')}" th:errors="*{carinfo}"> Error</td></br>
         
            <label for="carprice">Car Price: </label>
-        <input type="text" id="carprice" th:field="*{carprice}" /></br>
-        
+        <input type="text" id="carprice" th:field="*{carprice}" />
+         <td th:if="${#fields.hasErrors('carprice')}" th:errors="*{carprice}"> Error</td></br>
         
         <label for="categorylist">Owner</label>
 		<select id="categorylist" th:field="*{owner}" class="form-control">

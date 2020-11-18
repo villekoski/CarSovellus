@@ -1,6 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Categorylist</title>
+    <title>Car owner list
+    </title>
     <meta http-equiv="Content-Type" content = "text/html" charset="UTF-8">
 
 </head>
@@ -10,7 +11,7 @@
         <tbody>
             <tr th:each = "owner : ${owner}">
                 <td th:text="${owner.ownername}"></td>
-   
+   <td th:if="${#fields.hasErrors('ownername')}" th:errors="*{ownername}"> Error</td></br>
                	
 
                 </tr>

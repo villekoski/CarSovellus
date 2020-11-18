@@ -6,6 +6,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -14,10 +17,25 @@ public class Car {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long carid;
-    String cartitle;
-    String carcountry;
-    Integer caryear;
+    
+    @NotNull
+	@Size(min=1, max=30)
+    private String cartitle;
+    
+    @NotNull
+	@Size(min=1, max=15)
+    private String carcountry;
+    
+    @NotNull
+	
+    private Integer caryear;
+    
+    @NotNull
+	@Size(min=2, max=200)
     String carinfo;
+    
+    
+    @NotNull
     Double carprice;
     @JsonIgnoreProperties ("cars") 
     @ManyToOne

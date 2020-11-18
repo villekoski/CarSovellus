@@ -7,13 +7,17 @@
 </head>
 <body>
    <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
-
+ 	
     <h1>Car List </h1>
        <table>
+     
        <tbody>
+        
             <tr th:each = "car : ${cars}">
                 <td th:text="${car.cartitle}"></td>
+            
                 <td th:text="${car.carcountry}"></td>
+             
                 <td th:text="${car.caryear}"></td>
                 <td th:text="${car.carinfo}"></td>
                 <td th:text="${car.carprice}"></td>

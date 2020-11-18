@@ -1,8 +1,11 @@
 package hh.swd20.CarSovellus.webcontroller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,8 +33,14 @@ public class CategoryController {
 		  return "newcategory";
 	}
 	  @RequestMapping(value = "/saveC", method = RequestMethod.POST)
-	  	public String save(Owner owner) {
-		  ownerRepository.save(owner);
-		  return "redirect:/";
+	  	public String save(@Valid Owner owner, BindingResult bindingResult, Model model) {
+		  model.addAttribute("owners", ownerRepository.findAll());
+		  if (bindingResult.hasErrors()) {
+	    		return "newcategory";
+	    	}else{
+	    		ownerRepository.save(owner);
+	    		 return "redirect:/";
+	    	}
+		
 	  }
 }

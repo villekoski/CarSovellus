@@ -13,6 +13,7 @@
         
         <label for="cartitle">Car Name: </label>
         <input type="text" id="cartitle" th:field="*{cartitle}" /></br>
+          <td th:if="${#fields.hasErrors('cartitle')}" th:errors="*{cartitle}">Car name Error</td>
         <label for="carcountryr">Car Country: </label>
         <input type="text" id="carcountry" th:field="*{carcountry}" /></br>
         <label for="caryear">Car Year: </label>

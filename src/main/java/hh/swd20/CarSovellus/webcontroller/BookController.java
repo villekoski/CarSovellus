@@ -2,11 +2,15 @@ package hh.swd20.CarSovellus.webcontroller;
 
 import java.util.List;
 import java.util.Optional;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -50,16 +54,22 @@ public class BookController {
         return "booklist";
     }
     @RequestMapping(value ="/add")
-    public String addBook(Model model) {
+    public String addBook(Model model,  Car car) {
     	   model.addAttribute("owner", ownerRepository.findAll());
         model.addAttribute("car", new Car());
         return "addbook";
     }
     @RequestMapping(value="/save", method = RequestMethod.POST)
-    public String save(Car car) {
-        carRepository.save(car);
-        return "redirect:/";
+    public String save(@Valid Car car, BindingResult bindingResult, Model model) {
+    	 model.addAttribute("owner", ownerRepository.findAll());
+    	if (bindingResult.hasErrors()) {
+    		return "addbook";
+    	}else{
+    		carRepository.save(car);
+    		 return "redirect:/";
+    	}
     }
+    
    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
    @PreAuthorize("hasRole('ADMIN')")
     public String deleteBook(@PathVariable("id") Long carid, Model model) {

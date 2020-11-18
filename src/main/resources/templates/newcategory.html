@@ -1,7 +1,8 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
 <head>
-    <title>Category form</title>
+    <title>Car Form</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 
@@ -12,16 +13,18 @@
      <tbody>
             <tr th:each = "owner : ${owners}">
                 <td th:text="${owner.ownername}"></td>
-   
+   				
        
        </tbody>
        </table>
     <form th:object="${owner}" th:action="@{saveC}" action="#" method="post">
+    
         <label for="ownername">Owner Name: </label>
-        <input type="text" id="ownername" th:field="*{ownername}" /></br>
-		
+        <input type="text" id="ownername" th:field="*{ownername}" />
+		<td th:if="${#fields.hasErrors('ownername')}" th:errors="*{ownername}"> Error</td></br>
         <input type="submit" value="Save"></input>
     </form>
+    
     </div>
 </body>
 
